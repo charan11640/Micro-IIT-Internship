@@ -6,8 +6,8 @@ Features:
  Score System: Track correct/incorrect answers.
  Randomized Questions: Fresh quiz every time.
 
-Stopwatch Web App
-A simple, responsive stopwatch with start, pause, reset, and lap time functionality. Built with HTML, CSS, and vanilla JavaScript.
+Stopwatch App
+A simple, responsive stopwatch with start, pause, reset, and lap time functionality. Built with HTML, CSS,andJavaScript.
 Features:
 * Start/Pause – Control timer with a single button
 *Reset – Clear the timer completely
