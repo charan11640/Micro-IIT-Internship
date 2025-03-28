@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Master Pro - Test Your Knowledge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1><i class="fas fa-trophy"></i> Quiz Master Pro</h1>
+                <div class="quiz-info">
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="time">30</span>
+                    </div>
+                    <div class="score-display">
+                        <i class="fas fa-star"></i>
+                        <span id="current-score">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quiz-content">
+                <div id="start-screen" class="screen active">
+                    <h2>Welcome to Quiz Master Pro!</h2>
+                    <p>Challenge yourself with our diverse range of questions</p>
+                    <div class="game-settings">
+                        <div class="category-select">
+                            <h3><i class="fas fa-book"></i> Select Category:</h3>
+                            <select id="category">
+                                <option value="general">General Knowledge</option>
+                                <option value="science">Science</option>
+                                <option value="history">History</option>
+                                <option value="geography">Geography</option>
+                                <option value="sports">Sports</option>
+                                <option value="technology">Technology</option>
+                                <option value="entertainment">Entertainment</option>
+                            </select>
+                        </div>
+                        <div class="difficulty-select">
+                            <h3><i class="fas fa-chart-line"></i> Select Difficulty:</h3>
+                            <select id="difficulty">
+                                <option value="easy">Easy (30s per question)</option>
+                                <option value="medium">Medium (20s per question)</option>
+                                <option value="hard">Hard (15s per question)</option>
+                            </select>
+                        </div>
+                        <div class="question-count">
+                            <h3><i class="fas fa-list-ol"></i> Number of Questions:</h3>
+                            <select id="questionCount">
+                                <option value="5">5 Questions</option>
+                                <option value="10">10 Questions</option>
+                                <option value="15">15 Questions</option>
+                                <option value="20">20 Questions</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="start-btn" class="btn">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="screen">
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="question-counter">
+                            Question <span id="current-question">1</span> of <span id="total-questions">5</span>
+                        </div>
+                    </div>
+                    <h2 id="question">Question goes here</h2>
+                    <div class="options-container">
+                        <!-- Options will be dynamically added here -->
+                    </div>
+                    <div class="quiz-controls">
+                        <button id="skip-btn" class="btn btn-secondary">
+                            <i class="fas fa-forward"></i> Skip
+                        </button>
+                        <button id="hint-btn" class="btn btn-secondary">
+                            <i class="fas fa-lightbulb"></i> Hint
+                        </button>
+                    </div>
+                </div>
+
+                <div id="result-screen" class="screen">
+                    <div class="result-header">
+                        <i class="fas fa-trophy"></i>
+                        <h2>Quiz Complete!</h2>
+                    </div>
+                    
+                    <div class="score-container">
+                        <div class="score">
+                            <span id="final-score">0</span>
+                            <span class="score-label">Points</span>
+                        </div>
+                        
+                        <div class="bonus-info">
+                            <!-- Bonus information will be added here -->
+                        </div>
+                        
+                        <div class="stats">
+                            <div class="stat-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Correct: <span id="correct-answers">0</span></span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-times-circle"></i>
+                                <span>Wrong: <span id="wrong-answers">0</span></span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Time: <span id="time-taken">0:00</span></span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-percentage"></i>
+                                <span>Accuracy: <span id="accuracy">0%</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Feedback Form -->
+                    <div class="feedback-form-container" style="display: none;">
+                        <h3><i class="fas fa-comment-alt"></i> How was your experience?</h3>
+                        <form id="feedbackForm">
+                            <div class="rating-container">
+                                <div class="rating-label">Rate your experience:</div>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="feedback-categories">
+                                <div class="category-label">What did you like?</div>
+                                <div class="category-options">
+                                    <label>
+                                        <input type="checkbox" name="liked" value="Questions">
+                                        Questions
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="liked" value="Difficulty Levels">
+                                        Difficulty Levels
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="liked" value="Timer">
+                                        Timer
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="liked" value="Hints">
+                                        Hints
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="liked" value="Achievements">
+                                        Achievements
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="feedback-textarea">
+                                <label for="feedbackComments">Additional Comments:</label>
+                                <textarea id="feedbackComments" placeholder="Share your thoughts about the quiz..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn submit-feedback">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Feedback
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="review-container">
+                        <h3><i class="fas fa-list-check"></i> Answer Review</h3>
+                        <div id="answer-review"></div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button id="restart-btn" class="btn">
+                            <i class="fas fa-redo"></i>
+                            Try Another Quiz
+                        </button>
+                        <button id="share-btn" class="btn btn-secondary">
+                            <i class="fas fa-share-alt"></i>
+                            Share Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
